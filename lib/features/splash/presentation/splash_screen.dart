@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
 import 'package:technonext/features/dashboard/presentation/google_map_screen.dart';
+import 'package:technonext/features/dashboard/presentation/providers/location_provider.dart';
 import 'package:technonext/gen/assets.gen.dart';
 import 'package:technonext/gen/colors.gen.dart';
 
@@ -26,12 +29,36 @@ class _SplashScreenState extends State<SplashScreen>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
     _controller.forward();
 
-    _controller.addStatusListener((status) {
+    _controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        Navigator.pushReplacement(
+        final locationProvider = Provider.of<LocationProvider>(
           context,
-          MaterialPageRoute(builder: (context) => const GoogleMapScreen()),
+          listen: false,
         );
+        await locationProvider.requestLocationPermission();
+        if (locationProvider.permission == LocationPermission.deniedForever) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Permission Required'),
+              content: Text(
+                'Location permission is permanently denied. Please go to app settings and enable location permission.',
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Geolocator.openAppSettings(),
+                  child: Text('Open Settings'),
+                ),
+              ],
+            ),
+          );
+        } else if (locationProvider.permission == LocationPermission.always ||
+            locationProvider.permission == LocationPermission.whileInUse) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => GoogleMapScreen()),
+          );
+        }
       }
     });
     super.initState();
