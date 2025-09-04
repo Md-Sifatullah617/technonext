@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+
+
+///Initial Colors Start
+<color name="scaffoldColor">#FFf9efef</color>
+<color name="allPrimaryColor">#FFFFB300</color>
+<color name="secondaryColor">#FFFF3B3B</color>
+<color name="primaryDark">#FF1A1A1A</color>
+<color name="whiteColor">#FFFFFFFF</color>
+<color name="blackColor">#FF000000</color>
+<color name="greyColor">#FF9E9E9E</color>
+<color name="lightGreyColor">#FFF5F5F5</color>
+<color name="darkGreyColor">#FF616161</color>
+
+///Initial Colors Ends
+</colors>
+
+
+
+
