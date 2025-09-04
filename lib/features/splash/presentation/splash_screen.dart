@@ -1,10 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:technonext/features/dashboard/presentation/google_map_screen.dart';
+import 'package:technonext/gen/assets.gen.dart';
+import 'package:technonext/gen/colors.gen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+    _animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.forward();
+
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const GoogleMapScreen()),
+        );
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(body: const Center(child: Text('Splash Screen')));
+    return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+      body: Center(
+        child: AnimatedBuilder(
+          animation: _animation,
+          builder: (context, child) => ClipRRect(
+            child: Align(
+              alignment: Alignment.center,
+              widthFactor: _animation.value,
+              child: Image.asset(Assets.images.technonextLogo.path),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
