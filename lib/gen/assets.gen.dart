@@ -24,11 +24,14 @@ class $AssetsColorsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/car.png
+  AssetGenImage get car => const AssetGenImage('assets/icons/car.png');
+
   /// File path: assets/icons/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<AssetGenImage> get values => [car, logo];
 }
 
 class $AssetsImagesGen {

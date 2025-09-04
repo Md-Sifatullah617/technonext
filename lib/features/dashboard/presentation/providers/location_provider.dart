@@ -1,7 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:technonext/features/dashboard/presentation/widgets/widget_to_map_icon.dart';
+import 'package:technonext/gen/assets.gen.dart';
 
 import '../../domain/services/location_service.dart';
 
@@ -15,8 +19,19 @@ class LocationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  BitmapDescriptor _customMarker = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor get customMarker => _customMarker;
+
+  Future<void> loadCustomMarker(String assetPath) async {
+    _customMarker = await Image.asset(
+      assetPath,
+      height: 15.h,
+      width: 15.w,
+    ).toBitmapDescriptor();
+  }
+
   LocationProvider(this.locationService) {
-    fetchLocation();
+    loadCustomMarker(Assets.icons.car.path);
   }
 
   Position? _position;

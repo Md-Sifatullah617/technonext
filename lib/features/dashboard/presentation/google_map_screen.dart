@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:technonext/features/dashboard/presentation/providers/location_provider.dart';
+import 'package:technonext/features/dashboard/presentation/widgets/widget_to_map_icon.dart';
+import 'package:technonext/gen/assets.gen.dart';
 import 'package:technonext/gen/colors.gen.dart';
 
 class GoogleMapScreen extends StatelessWidget {
@@ -35,6 +37,7 @@ class GoogleMapScreen extends StatelessWidget {
                 Marker(
                   markerId: MarkerId('current_location'),
                   position: LatLng(myPosition.latitude, myPosition.longitude),
+                  icon: locationProvider.customMarker,
                 ),
             },
             onMapCreated: (GoogleMapController controller) {
