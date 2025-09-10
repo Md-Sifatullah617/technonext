@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:technonext/core/config/app_config.dart';
+import 'package:technonext/core/di/service_locator.dart';
+import 'package:technonext/features/route/presentation/providers/route_provider.dart';
+import 'package:technonext/features/splash/presentation/providers/splash_provider.dart';
 import 'package:technonext/features/splash/presentation/splash_screen.dart';
 import 'package:technonext/gen/colors.gen.dart';
 
-import 'features/dashboard/data/services/location_service_impl.dart';
-import 'features/dashboard/presentation/providers/location_provider.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  // Initialize configuration
+  await AppConfig.initialize();
+
+  // Setup all dependencies using GetIt
+  await setupDependencies();
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => LocationProvider(LocationServiceImpl()),
-        ),
+        ChangeNotifierProvider(create: (_) => getIt<RouteProvider>()),
+        ChangeNotifierProvider(create: (_) => getIt<SplashProvider>()),
       ],
       child: const MyApp(),
     ),
@@ -34,7 +42,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.scaffoldColor,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -38,6 +38,10 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_maps_flutter: ^2.13.1
   geolocator: ^14.0.2
+  dio: ^5.9.0
+  get_it: ^7.6.4
+  uuid: ^4.4.0
+  flutter_polyline_points: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +87,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/colors/
+    - config.json
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
