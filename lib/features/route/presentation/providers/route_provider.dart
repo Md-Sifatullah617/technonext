@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:technonext/features/route/presentation/widgets/widget_to_map_icon.dart';
+import 'package:technonext/gen/assets.gen.dart';
 
 import '../../domain/entities/location_point.dart';
 import '../../domain/entities/route_info.dart';
@@ -155,9 +158,11 @@ class RouteProvider extends ChangeNotifier {
             title: 'Origin',
             snippet: _origin!.address ?? 'Selected location',
           ),
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueGreen,
-          ),
+          icon: await Image.asset(
+            Assets.icons.car.path,
+            width: 15.w,
+            height: 15.h,
+          ).toBitmapDescriptor(),
         ),
       );
     }
