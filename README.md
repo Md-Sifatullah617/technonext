@@ -19,6 +19,7 @@ This Flutter application allows users to select two points on an interactive map
 ## ✅ Assessment Requirements Fulfilled
 
 ### Core Features
+
 - ✅ **Interactive Map Interface**: Pan, zoom, and tap to select points
 - ✅ **Point-and-Select Functionality**: Mark origin and destination locations
 - ✅ **Real-time Route Display**: Instant route rendering with Google Maps polylines
@@ -26,6 +27,7 @@ This Flutter application allows users to select two points on an interactive map
 - ✅ **Route Information**: Display distance and estimated travel time
 
 ### Bonus Features
+
 - ✅ **Clean Architecture**: Domain, Data, and Presentation layers
 - ✅ **State Management**: Provider pattern with dependency injection
 - ✅ **Production-Level Code**: Error handling, configuration management
@@ -70,21 +72,24 @@ lib/
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/Md-Sifatullah617/technonext.git
    cd technonext
    ```
 
 2. **Install dependencies:**
+
    ```bash
    flutter pub get
    ```
 
 3. **Configure API key:**
+
    ```json
    // config.json (already configured)
    {
-     "GOOGLE_MAPS_API_KEY": "AIzaSyDZn0SMbuKa3vm5cKJ4FCms0zIkgPMvuRE"
+     "GOOGLE_MAPS_API_KEY": "YOUR_API_KEY_HERE"
    }
    ```
 
@@ -116,14 +121,14 @@ flutter build apk --release
 
 ## 🔧 Technical Stack
 
-| Technology | Purpose | Version |
-|------------|---------|---------|
-| **Flutter** | Mobile framework | 3.24.5 |
-| **Provider** | State management | ^6.1.2 |
-| **Google Maps** | Map integration | ^2.9.0 |
-| **GetIt** | Dependency injection | ^8.0.2 |
-| **Geolocator** | Location services | ^13.0.1 |
-| **HTTP** | API communication | ^1.2.2 |
+| Technology      | Purpose              | Version |
+| --------------- | -------------------- | ------- |
+| **Flutter**     | Mobile framework     | 3.24.5  |
+| **Provider**    | State management     | ^6.1.2  |
+| **Google Maps** | Map integration      | ^2.9.0  |
+| **GetIt**       | Dependency injection | ^8.0.2  |
+| **Geolocator**  | Location services    | ^13.0.1 |
+| **HTTP**        | API communication    | ^1.2.2  |
 
 ### API Integrations
 
@@ -134,12 +139,14 @@ flutter build apk --release
 ## 🎨 Features Showcase
 
 ### Map Interactions
+
 - **Custom Markers**: Branded START/END markers with custom designs
 - **Real-time Routing**: Instant route calculation and display
 - **Multiple Map Types**: Normal, Satellite, Hybrid, Terrain views
 - **Smooth Animations**: Fluid map interactions and transitions
 
 ### State Management
+
 - **Provider Pattern**: Reactive UI updates
 - **Error Handling**: Graceful failure recovery
 - **Loading States**: Clear user feedback
@@ -148,12 +155,14 @@ flutter build apk --release
 ## 📊 Performance & Quality
 
 ### Code Quality
+
 - **Clean Architecture**: Maintainable and testable code structure
 - **SOLID Principles**: Well-structured object-oriented design
 - **Error Boundaries**: Comprehensive error handling
 - **Documentation**: Inline code documentation
 
 ### Performance Optimizations
+
 - **Efficient Rendering**: Optimized map rendering and polyline drawing
 - **Memory Management**: Proper resource cleanup
 - **API Optimization**: Cached responses where appropriate
